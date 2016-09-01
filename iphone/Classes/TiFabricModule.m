@@ -55,6 +55,7 @@
 {
 	// release any resources that have been retained by the module
     RELEASE_TO_NIL(crashlytics);
+    RELEASE_TO_NIL(answers);
 	[super dealloc];
 }
 
@@ -73,6 +74,8 @@
 
 -(void)init:(id)args
 {
+    [[Fabric sharedSDK] setDebug: YES];
+    [Fabric with:@[[Answers class]]];
     [Fabric with:@[CrashlyticsKit]];
     NSLog(@"[DEBUG] initiated Fabric");
 }

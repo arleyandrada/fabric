@@ -9,13 +9,14 @@
 package ti.fabric;
 
 import io.fabric.sdk.android.Fabric;
-/*
+
 import org.appcelerator.kroll.KrollModule;
 import org.appcelerator.kroll.annotations.Kroll;
 import org.appcelerator.titanium.TiApplication;
 import org.appcelerator.kroll.common.Log;
 
 import com.crashlytics.android.Crashlytics;
+import com.crashlytics.android.answers.Answers;
 
 @Kroll.module(name = "Fabric", id = "ti.fabric")
 public class FabricModule extends KrollModule {
@@ -23,7 +24,7 @@ public class FabricModule extends KrollModule {
 	// Standard Debugging variables
 	private static final String LCAT = "FabricModule";
 	
-	public static boolean debuggable = false;
+	public static boolean debuggable = true;
 
 	public FabricModule() {
 		super();
@@ -32,14 +33,15 @@ public class FabricModule extends KrollModule {
 	@Kroll.onAppCreate
 	public static void onAppCreate(TiApplication app) {
 		Log.d(LCAT, "inside onAppCreate");
-		// put module init code that needs to run when the application is
-		// created
 	}
 
 	@Kroll.method
 	public boolean init() {
 		try{
-			final Fabric fabric = new Fabric.Builder(TiApplication.getInstance()).kits(new Crashlytics()).debuggable(debuggable).build();
+			final Fabric fabric = new Fabric.Builder(TiApplication.getInstance())
+				.kits(new Crashlytics(), new Answers())
+				.debuggable(debuggable)
+				.build();
 			Fabric.with(fabric);
 			return true;
 		}catch(Exception exp){
@@ -47,5 +49,18 @@ public class FabricModule extends KrollModule {
 			return false;
 		}
 	}
+
+	@Kroll.method @Kroll.getProperty
+	public CrashlyticsModule getCrashlytics()
+	{
+		final CrashlyticsModule	crashlyticsModule = new CrashlyticsModule();
+		return crashlyticsModule;
+	}
+
+	@Kroll.method @Kroll.getProperty
+	public AnswersModule getAnswers()
+	{
+		final AnswersModule answersModule = new AnswersModule();
+		return answersModule;
+	}
 }
-*/

@@ -1,0 +1,4 @@
+"/GitHub/fabric/android/build/generated/java/ti/fabric/FabricBootstrap.java"
+"/GitHub/fabric/android/src/ti/fabric/AnswersModule.java"
+"/GitHub/fabric/android/src/ti/fabric/CrashlyticsModule.java"
+"/GitHub/fabric/android/src/ti/fabric/FabricModule.java"

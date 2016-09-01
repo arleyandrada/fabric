@@ -9,7 +9,7 @@
 package ti.fabric;
 
 import java.util.HashMap;
-/*
+
 import org.appcelerator.kroll.KrollModule;
 import org.appcelerator.kroll.annotations.Kroll;
 import org.appcelerator.titanium.TiC;
@@ -39,16 +39,16 @@ public class CrashlyticsModule extends KrollModule {
 		this();
 	}
 	
-	@Kroll.method
-	public void setDebugMode(Object value)
-	{
-		FabricModule.debuggable = TiConvert.toBoolean(value);
-	}
-	
 	@Kroll.method @Kroll.getProperty
 	public String getVersion()
 	{
 		return Crashlytics.getInstance().core.getVersion();
+	}
+	
+	@Kroll.method
+	public void setDebugMode(Object value)
+	{
+		FabricModule.debuggable = TiConvert.toBoolean(value);
 	}
 	
 	@Kroll.method
@@ -57,26 +57,16 @@ public class CrashlyticsModule extends KrollModule {
 		Crashlytics.getInstance().core.crash();
 	}
 	
-	@Kroll.method
-	public void logException(Object error)
-	{
-		if(error instanceof String){
-			error = new Exception(TiConvert.toString(error));
-		}else if(error instanceof HashMap){
-			error = new Exception(TiConvert.toString((HashMap) error, TiC.PROPERTY_MESSAGE));
-		}
-		
-		if(error instanceof Exception){
-			Crashlytics.getInstance().core.logException((Exception) error);	
-		}
-	}
-	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Kroll.method
 	public void leaveBreadcrumb(Object value)
 	{
 		if(value instanceof HashMap){
 			HashMap opts = (HashMap) value;
-			Crashlytics.getInstance().core.log(TiConvert.toInt(opts.get(TiC.PROPERTY_LEVEL), LOG_LEVEL_INFO), TiConvert.toString(opts, TiC.PROPERTY_TAG), TiConvert.toString(opts, TiC.PROPERTY_MESSAGE));
+			Crashlytics.getInstance().core.log(
+					TiConvert.toInt(opts.get(TiC.PROPERTY_LEVEL), LOG_LEVEL_INFO),
+					TiConvert.toString(opts, TiC.PROPERTY_TAG),
+					TiConvert.toString(opts, TiC.PROPERTY_MESSAGE));
 		}else{
 			Crashlytics.getInstance().core.log(TiConvert.toString(value));
 		}
@@ -99,7 +89,7 @@ public class CrashlyticsModule extends KrollModule {
 	{
 		Crashlytics.getInstance().core.setUserEmail(value);
 	}
-	
+
 	@Kroll.method
 	public void setInt(String key, Object value)
 	{
@@ -113,15 +103,15 @@ public class CrashlyticsModule extends KrollModule {
 	}
 	
 	@Kroll.method
-	public void setDouble(String key, Object value)
-	{
-		Crashlytics.getInstance().core.setDouble(key, TiConvert.toDouble(value));
-	}
-	
-	@Kroll.method
 	public void setBool(String key, Object value)
 	{
 		Crashlytics.getInstance().core.setBool(key, TiConvert.toBoolean(value));
+	}
+
+	@Kroll.method
+	public void setDouble(String key, Object value)
+	{
+		Crashlytics.getInstance().core.setDouble(key, TiConvert.toDouble(value));
 	}
 	
 	@Kroll.method
@@ -130,5 +120,18 @@ public class CrashlyticsModule extends KrollModule {
 		Crashlytics.getInstance().core.setString(key, TiConvert.toString(value));
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Kroll.method
+	public void logException(Object error)
+	{
+		if(error instanceof String){
+			error = new Exception(TiConvert.toString(error));
+		}else if(error instanceof HashMap){
+			error = new Exception(TiConvert.toString((HashMap) error, TiC.PROPERTY_MESSAGE));
+		}
+		
+		if(error instanceof Exception){
+			Crashlytics.getInstance().core.logException((Exception) error);	
+		}
+	}
 }
-*/

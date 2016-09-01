@@ -59,7 +59,7 @@
 		AA747D9E0F9514B9006C5449 /* TiFabric_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiFabric_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C039E62B1D5BBCFA00B323A4 /* TiAnswersModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TiAnswersModule.h; path = Classes/TiAnswersModule.h; sourceTree = "<group>"; };
-		C039E62D1D5BBD2600B323A4 /* TiAnswersModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiAnswersModule.m; sourceTree = "<group>"; };
+		C039E62D1D5BBD2600B323A4 /* TiAnswersModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TiAnswersModule.m; path = Classes/TiAnswersModule.m; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libTiFabric.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTiFabric.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
