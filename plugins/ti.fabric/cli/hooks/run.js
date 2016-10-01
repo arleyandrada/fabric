@@ -109,7 +109,7 @@ exports.init = function(logger, config, cli, appc) {
 
 					try {
 
-						logger.debug(TAG + ' : ' + ' processing fabric for android');
+						logger.debug(TAG + ' : ' + cli.tiapp.name + ' - processing fabric for android');
 
 						var buildDir = projectDir + '/build/android/',
 						    srcFabricProperties = projectDir + '/plugins/ti.fabric/android/fabric.properties',
@@ -144,11 +144,13 @@ exports.init = function(logger, config, cli, appc) {
 
 						fse.copySync(srcCrashlyticsFld, buildDir + 'crashlytics');
 
+						logger.debug(TAG + ' : ' + cli.tiapp.name + ' - saved fabric for android');
+						
 						done();
 
 					} catch(e) {
 
-						logger.error(TAG + ' : ' + e);
+						logger.error(TAG + ' : ' + cli.tiapp.name + ' - ERROR ' + e);
 						return;
 
 					}
